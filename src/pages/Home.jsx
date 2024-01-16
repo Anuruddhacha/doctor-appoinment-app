@@ -8,15 +8,17 @@ import VideoIcon from '../../src/assets/images/video-icon.png'
 import AvatarIcon from '../../src/assets/images/avatar-icon.png'
 import FeatureImg from '../../src/assets/images/feature-img.png'
 import FaqImg from '../../src/assets/images/faq-img.png'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {BsArrowRight} from 'react-icons/bs'
 import About from '../components/About/About'
 import ServicesList from '../components/services/ServicesList'
 import DoctorsList from '../components/Doctors/DoctorsList'
 import FaqList from '../components/Faq/FaqList'
 import Testimonial from '../components/Testimonial/Testimonial'
+import { toast } from 'react-toastify'
 
 const Home = () => {
+  const navigate = useNavigate()
   return (
     <>
     
@@ -38,7 +40,11 @@ const Home = () => {
              <p className='text__para'>
              Welcome to DocSyncPro, where we empower individuals to achieve optimal well-being and embrace a vibrant life. Discover expert guidance, personalized resources, and a supportive community dedicated to helping you thrive. Start your journey to a healthier, happier you today!
              </p>
-             <button
+             <button 
+             onClick={()=>{
+              navigate('/login')
+              toast.error("Please login before")
+             }}
              className='btn'>
                Request an Appoinment
              </button>

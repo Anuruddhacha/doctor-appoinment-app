@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { HashLoader } from 'react-spinners'
 
 const Login = () => {
 
@@ -9,8 +10,9 @@ const Login = () => {
 const handleInputChange = e=>{
   setFormData({...formData,[e.target.name]:e.target.value})
 }
-
+const [isLoading,setIsloading] = useState(false)
   return (
+   
     <section>
 
        <div className='w-full max-w-[570px] mx-auto rounded-lg
@@ -51,9 +53,15 @@ const handleInputChange = e=>{
           </div>
 
           <div className="mt-7">
-            <button type='submit' className="btn w-full
-            rounded-lg px-4 py-3">
-              Login
+          <button
+            disabled={isLoading && true}
+             type='submit' className="btn w-full
+            rounded-lg px-4 py-3"
+            onClick={()=>{
+              setIsloading(true)
+            }}
+            >
+              {isLoading? <HashLoader size={35} color='#ffffff'/> :'Login'}
             </button>
           </div>
 
